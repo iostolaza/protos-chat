@@ -6,9 +6,9 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="p-4 border-b border-border flex items-center gap-3 bg-card text-card-foreground">
+    <div class="p-3 flex items-center gap-2">
       <img src="user-avatar.jpg" alt="User" class="w-10 h-10 rounded-full" />
-      <span class="font-semibold">Current User</span>
+      <span class="font-semibold text-foreground">Current User</span>
     </div>
   `,
 })

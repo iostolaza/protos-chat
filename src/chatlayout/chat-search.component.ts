@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
   template: `
     <div class="p-4">
-      <input type="text" placeholder="Search chats..." class="w-full p-2 border border-border rounded bg-background text-foreground placeholder:text-muted-foreground" />
+      <input type="text" placeholder="Search chats..." class="w-full p-1 border rounded bg-white text-foreground placeholder:text-muted-foreground" />
     </div>
   `,
 })

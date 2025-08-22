@@ -9,7 +9,7 @@ interface Message { text: string; isSelf?: boolean; timestamp?: Date; read?: boo
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-background">
+    <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-background min-h-0">
       <div *ngFor="let msg of messages()" [class]="msg.isSelf ? 'flex justify-end' : 'flex'">
         <div [class]="msg.isSelf ? 'bg-primary text-primary-foreground' : 'bg-card text-card-foreground'" class="p-3 rounded-lg max-w-xs">
           <p>{{ msg.text }}</p>
