@@ -1,25 +1,27 @@
-import { Component } from "@angular/core";
-import { CommonModule } from "@angular/common"; 
-
-import { UserProfileComponent } from "../chat/user-profile.component";
-import { ChatSearchComponent } from "../chat/chat-search.component";
-import { ChatListComponent } from "../chat/chat-list.component";
-import { ChatHeaderComponent } from "../chat/chat-header.component";
-import { ChatMessagesComponent } from "../chat/chat-messages.component";
-import { MessageInputComponent } from "../chat/message-input.component";
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { UserProfileComponent } from '../chatlayout/user-profile.component';
+import { ChatSearchComponent } from '../chatlayout/chat-search.component';
+import { ChatListComponent } from '../chatlayout/chat-list.component';
+import { ChatHeaderComponent } from '../chatlayout/chat-header.component';
+import { ChatMessagesComponent } from '../chatlayout/chat-messages.component';
+import { MessageInputComponent } from '../chatlayout/message-input.component';
 
 @Component({
-  selector: "app-root",
+  selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
+    RouterOutlet,
     UserProfileComponent,
     ChatSearchComponent,
     ChatListComponent,
     ChatHeaderComponent,
     ChatMessagesComponent,
-    MessageInputComponent,
+    MessageInputComponent
   ],
-  templateUrl: "./app.component.html",
+  templateUrl: './app.component.html',
+  styleUrl: './app.css'
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'protos-chat';
+}

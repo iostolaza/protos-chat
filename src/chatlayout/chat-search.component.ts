@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'chat-search',
+  selector: 'app-chat-search',
   standalone: true,
   imports: [FormsModule],
   template: `
     <div class="p-4">
-      <input type="text" placeholder="Search chats..." class="w-full p-2 border rounded dark:bg-gray-800 dark:text-white" />
+      <input type="text" placeholder="Search chats..." class="w-full p-2 border border-border rounded bg-background text-foreground placeholder:text-muted-foreground" />
     </div>
   `,
 })

@@ -1,17 +1,19 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatService } from './chat.service';
 
+interface Message { text: string; isSelf?: boolean; timestamp?: Date; read?: boolean; }
+
 @Component({
-  selector: 'chat-messages',
+  selector: 'app-chat-messages',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="flex-1 overflow-y-auto p-4 space-y-4">
+    <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-background">
       <div *ngFor="let msg of messages()" [class]="msg.isSelf ? 'flex justify-end' : 'flex'">
-        <div [class]="msg.isSelf ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700'" class="p-3 rounded-lg max-w-xs">
+        <div [class]="msg.isSelf ? 'bg-primary text-primary-foreground' : 'bg-card text-card-foreground'" class="p-3 rounded-lg max-w-xs">
           <p>{{ msg.text }}</p>
-          <span class="text-xs text-gray-400">{{ msg.timestamp | date:'shortTime' }}</span>
+          <span class="text-xs text-muted-foreground">{{ msg.timestamp | date:'shortTime' }}</span>
           <span *ngIf="msg.read" class="text-xs">✓</span>
         </div>
       </div>
@@ -20,5 +22,5 @@ import { ChatService } from './chat.service';
 })
 export class ChatMessagesComponent {
   private chatService = inject(ChatService);
-  messages = signal(this.chatService.getMessages()); // Use signals for efficient updates
+  messages = this.chatService.getMessages();
 }
