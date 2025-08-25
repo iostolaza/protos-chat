@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { ChatService } from './chat.service';
 
 interface Message { text: string; isSelf?: boolean; timestamp?: Date; read?: boolean; }
@@ -7,16 +7,20 @@ interface Message { text: string; isSelf?: boolean; timestamp?: Date; read?: boo
 @Component({
   selector: 'app-chat-messages',
   standalone: true,
-  imports: [CommonModule],
+  imports: [DatePipe],
   template: `
-    <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-background min-h-0">
-      <div *ngFor="let msg of messages()" [class]="msg.isSelf ? 'flex justify-end' : 'flex'">
-        <div [class]="msg.isSelf ? 'bg-primary text-primary-foreground' : 'bg-card text-card-foreground'" class="p-3 rounded-lg max-w-xs">
-          <p>{{ msg.text }}</p>
-          <span class="text-xs text-muted-foreground">{{ msg.timestamp | date:'shortTime' }}</span>
-          <span *ngIf="msg.read" class="text-xs">✓</span>
+    <div class="chat-messages">
+      @for (msg of messages(); track msg.timestamp) {
+        <div [class]="msg.isSelf ? 'flex justify-end' : 'flex'">
+          <div [class]="msg.isSelf ? 'chat-message-self' : 'chat-message-other'">
+            <p>{{ msg.text }}</p>
+            <span class="text-xs text-muted-foreground">{{ msg.timestamp | date:'shortTime' }}</span>
+            @if (msg.read) {
+              <span class="text-xs">✓</span>
+            }
+          </div>
         </div>
-      </div>
+      }
     </div>
   `,
 })

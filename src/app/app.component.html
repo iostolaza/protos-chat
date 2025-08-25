@@ -1,19 +1,18 @@
-
 <!-- Outer wrapper for 80% width, centering, shadow, and full height -->
-<div class="mx-auto w-[80%] h-screen shadow-lg bg-background text-foreground">
+<div class="mx-auto w-[80%] h-screen shadow-lg bg-background text-foreground md:w-[80%] sm:w-full">
   <div class="flex h-full">
-    <!-- Sidebar: light blue-gray bg -->
-    <div class="w-64 flex flex-col bg-primary border-r border-border">
-      <app-user-profile class="p-4"></app-user-profile>
-      <app-chat-search class="p-4"></app-chat-search>
-      <app-chat-list class="flex-1 overflow-y-auto"></app-chat-list>
+    <!-- Sidebar -->
+    <div class="w-64 flex flex-col bg-primary-500 border-r md:w-64 sm:w-20 sm:overflow-x-hidden">
+      <app-user-profile class="user-profile"></app-user-profile>
+      <app-chat-search class="chat-search"></app-chat-search>
+      <app-chat-list class="chat-list"></app-chat-list>
     </div>
     
-    <!-- Main area: white bg -->
-    <div class="flex-1 flex flex-col bg-background">
-      <app-chat-header class="p-4 border-b border-border bg-primary"></app-chat-header>
-      <app-chat-messages class="flex-1 overflow-y-auto p-4"></app-chat-messages>
-      <app-message-input class="p-4 border-t border-border bg-primary"></app-message-input>
+    <!-- Main area -->
+    <div class="flex-1 flex flex-col bg-background relative min-h-0">
+      <app-chat-header class="chat-header"></app-chat-header>
+      <app-chat-messages class="chat-messages"></app-chat-messages>
+      <app-message-input class="message-input"></app-message-input>
     </div>
     <router-outlet></router-outlet>
   </div>
